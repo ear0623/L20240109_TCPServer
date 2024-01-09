@@ -86,6 +86,7 @@ int main()
 		sprintf(Buffer, "%d%c%d", FirstNumber, Operator[OperaterIndex], SecondNumber);
 		//sprintf_s(Buffer,1024, "%d%c%d", FirstNumber, Operator[OperaterIndex], SecondNumber);
 		//buffer overflow 공격;
+		//sprintf_버퍼에 저장된 문자열을 넣어준다.
 
 
 		int SentByte = send(ClientSocket, Buffer, (int)(strlen(Buffer) + 1), 0);// 한번에 못보내면 또보내고또보내고,,
@@ -119,7 +120,7 @@ int main()
 		else if (RecvByte == 0)//상대가 나간거//
 		{
 			cout << "Disconnected : " << GetLastError() << endl;
-			exit(-1);
+			exit(-1);//원래 예외처리 // 절대 안끄는게 맞음/
 		}
 		else
 		{
@@ -133,5 +134,6 @@ int main()
 
 	WSACleanup();//End;
 	//window전용//멀티프로세스는 윈도우지원없음
+
 	return 0;
 }
